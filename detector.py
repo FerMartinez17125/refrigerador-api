@@ -279,7 +279,7 @@ if __name__ == "__main__":
     # Ejemplo de uso (puedes comentar esto)
     try:
         # Crear una imagen de prueba (1x1 pixel blanco)
-        test_image = Image.open("C:/Users/fermt/Documents/refrigerador_api/foto_prueba.jpg")
+        test_image = Image.new('RGB', (100, 100), color='white')
 
         print("🔬 Probando detector con imagen de prueba...")
         result = detectar_alimentos(test_image)
