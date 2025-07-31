@@ -6,13 +6,16 @@ app = Flask(__name__)
 
 @app.route('/analizar', methods=['POST'])
 def analizar():
-    if 'imagen' not in request.files:
-        return jsonify({'error': 'No se recibió una imagen'}), 400
+    try:
+        if 'imagen' not in request.files:
+            return jsonify({'error': 'No se recibió una imagen'}), 400
 
-    imagen = Image.open(request.files['imagen'])
-    resultado = detectar_alimentos(imagen)
+        imagen = Image.open(request.files['imagen'])
+        resultado = detectar_alimentos(imagen)
 
-    return jsonify({'alimentos_detectados': resultado})
+        return jsonify({'alimentos_detectados': resultado})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
