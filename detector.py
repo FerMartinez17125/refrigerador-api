@@ -25,11 +25,11 @@ class FoodDetector:
     def _setup_gemini(self):
         """Configura la API de Gemini usando variable de entorno"""
         try:
-            # Obtener API key desde variable de entorno
-            api_key = os.getenv("AIzaSyAKcJSkpXKwBpH0zUxu21DYIQYzJZywlhA")
+            # Obtener API key desde variable de entorno (igual que en tu código original)
+            api_key = os.getenv("GOOGLE_API_KEY")
 
             if not api_key:
-                raise ValueError("Variable de entorno GEMINI_API_KEY no configurada")
+                raise ValueError("Variable de entorno GOOGLE_API_KEY no configurada")
 
             # Configurar Gemini
             genai.configure(api_key=api_key)
@@ -272,14 +272,14 @@ if __name__ == "__main__":
     print("🧪 Modo de testing - detector.py")
 
     # Verificar que la variable de entorno esté configurada
-    if not os.getenv("GEMINI_API_KEY"):
-        print("❌ Configura la variable de entorno GEMINI_API_KEY para testing")
+    if not os.getenv("GOOGLE_API_KEY"):
+        print("❌ Configura la variable de entorno GOOGLE_API_KEY para testing")
         exit(1)
 
     # Ejemplo de uso (puedes comentar esto)
     try:
         # Crear una imagen de prueba (1x1 pixel blanco)
-        test_image = Image.new('RGB', (100, 100), color='white')
+        test_image = Image.open("C:/Users/fermt/Documents/refrigerador_api/foto_prueba.jpg")
 
         print("🔬 Probando detector con imagen de prueba...")
         result = detectar_alimentos(test_image)

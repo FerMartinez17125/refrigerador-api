@@ -13,3 +13,6 @@ def analizar():
     resultado = detectar_alimentos(imagen)
 
     return jsonify({'alimentos_detectados': resultado})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
